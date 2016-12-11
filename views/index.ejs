@@ -1,0 +1,54 @@
+<html>
+<title>Typeracer</title>
+
+<head>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="title"> Typeracer @ <%=roomname%></div>
+        
+        <div class="dropdown pull-right">
+            <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header"><%=username%></li>
+                <li><a href="#">Fork me on Github</a></li>
+                <li class="divider"></li>
+                <li><a href="/">Leave Room</a></li>
+            </ul>
+        </div>
+        <div class="profile-pic">
+            <img src="<%=avatar%>" />
+        </div>
+        <button class="btn btn-success pull-right" id="btnStart">Start Race</button>
+    </div>
+    <div id="race-court-container">
+        <div id="race-timer" class="border-info"></div>
+        <div id="race-court">
+            <div id="courts">
+            </div>
+            <br>
+            <p id="text"></p>
+            <input type="text" class="form-control" id="input">
+        </div>
+    </div>
+    <div id="chat">
+        <div class="side-bar-heading">Chat</div>
+    </div>
+    <div id="message">
+    </div>
+    
+    <div id="username" hidden><%=username%></div>
+    <div id="roomname" hidden><%=roomname%></div>
+    <div id="userType" hidden><%=type%></div>
+    <div id="sentence" hidden><%=sentence%></div>
+    <div id="avatar" hidden><%=avatar%></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="user.js"></script>
+    <script src="script.js"></script>
+</body>

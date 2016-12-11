@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.nav-bar {
+    width: 100%;
+    background-color: darkorange;
+    height: 50px;
+}
+
+.title {
+    color: white;
+    float: left;
+    margin-left: 10px;
+    line-height: 50px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#text {
+    font-size: 18px;
+    padding: 5px;
+    text-align: center;
+    float: left;
+    color: gray;
+    /*Disable text selection*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#race-court-container {
+    width: 900px;
+    height: 600px;
+    margin-left: 20px;
+    position: relative;
+    margin:0 auto;
+}
+
+#race-timer{
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    font-size: 12px;
+    color: black;
+    font-weight: bold;
+}
+
+#race-court {
+    width: 800px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: darkorange;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.court {
+    width: 100%;
+    margin-top: 50px;
+}
+
+#input {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0;
+}
+
+.wrong {
+    font-size: 15px;
+    color: maroon;
+    font-weight: bold;
+}
+
+.current-word {
+    text-decoration: underline;
+    color: green;    
+}
+
+.court-line {
+    position: relative;
+    height: 10px;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: orange;
+    border-style: solid;
+    border-color: whitesmoke;
+}
+
+.object-info {
+    position: absolute;
+    left: 0px;
+}
+
+.object-pic {
+    position: absolute;
+    left: 0%;
+    top: -20;
+    height: 43px;
+    width: 43px;
+    border-radius: 100%;
+    background-color: whitesmoke;
+    border-style: solid;
+    border-color: orange;
+    border-width: 3px;
+    float: left;
+    padding: 2px;
+}
+
+.object-pic-mine{
+    border-color: limegreen !important;
+}
+
+.object-name {
+    position: absolute;
+    left: 0%;
+    top: -35;
+    color: #373737;
+    float: left;
+    font-size: 12px;
+}
+
+.object-score {
+    position: absolute;
+    left: 105%;
+    margin-left: 5px;
+    top: -10;
+    color: #373737;
+    float: left;
+    font-size: 12px;
+    width: 65px;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+    background-color: white;
+}
+
+.profile-pic img {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    float: right;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.wpm {
+    color: maroon;
+    font-weight: bold;
+}
+
+#message {
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    border-style: solid;
+    border-color: orange;
+    background-color: white;
+    border-width: 2px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#btnStart{
+    margin-right: 20px;
+    margin-top: 8px;
+}
+
+.dropdown{
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.border-info{
+    border-style: solid;
+    border-color: orange;
+    background-color: white;
+    border-width: 1px;
+}

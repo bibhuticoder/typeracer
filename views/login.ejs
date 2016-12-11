@@ -1,0 +1,135 @@
+<html>
+<title>Typeracer</title>
+
+<head>
+    <style>
+
+        body{
+            overflow: auto !important;
+        }
+
+        .select {
+            height: 30px;
+            width: 30px;
+            border-radius: 100%;
+        }
+        
+        li {
+            cursor: pointer;
+        }
+        
+        li:hover {
+            background-color: whitesmoke;
+        }
+        
+        #alert {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="title"> Typeracer</div>
+    </div>
+    <div class="container">
+        <br><br>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead">Play with your friends or other random users</p>
+                <input type="text" class="form-control" placeholder="Username" id="username" />
+                <br>
+                <select class="form-control" id="playType">
+                    <option>Create or enter room</option>
+                    <option>Play with random users</option>
+                </select>
+                <br>
+                <input type="text" class="form-control" placeholder="Roomname" id="roomname" />
+                <br>
+                <label>Choose your avatar</label>
+                <br>
+                <div id="avatar" hidden="true"></div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" data-src="/images/avatar1.png" data-choosen="true"><img src="/images/avatar1.png" class="select"/></button>
+                    <button type="button" class="btn btn-default" data-src="/images/avatar2.png" data-choosen="false"><img src="/images/avatar2.png" class="select"/></button>
+                    <button type="button" class="btn btn-default" data-src="/images/avatar3.png" data-choosen="false"><img src="/images/avatar3.png" class="select"/></button>
+                    <button type="button" class="btn btn-default" data-src="/images/avatar4.png" data-choosen="false"><img src="/images/avatar4.png" class="select"/></button>
+                    <button type="button" class="btn btn-default" data-src="/images/avatar5.png" data-choosen="false"><img src="/images/avatar5.png" class="select"/></button>
+                    <button type="button" class="btn btn-default" data-src="/images/avatar6.png" data-choosen="false"><img src="/images/avatar6.png" class="select"/></button>
+                    <button type="button" class="btn btn-default" data-src="/images/avatar7.png" data-choosen="false"><img src="/images/avatar7.png" class="select"/></button>
+                </div>
+                <br> <br>
+                <div id="alert" class="alert alert-danger"></div>
+                <br>
+                <button class="btn btn-warning" id="submit">Enter Room</button>
+                <hr>
+                <p class="lead">Practice yourself</p>
+                <p>Increase your typing speed typing alone. And this sentence will follow the initial sentence explaining the
+                    meaning of this div sectoin.</p>
+                <button class="btn btn-success">Practice</button>
+            </div>
+            <div class="col-md-6">
+                <p class="lead">This section shall contain description of the app with a .gif picture showing gameplay.</p>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script>
+    $("#alert").fadeOut(1);
+    var avatar, username, roomname, postUrl = '/play';
+    $(".btn").click(function(){        
+        avatar = $(this).attr('data-src');
+        $("#avatar").text(avatar);        
+    });
+
+    $("#submit").click(function(){
+        username = $("#username").val();
+        roomname = $("#roomname").val();
+        if(postUrl === '/random') roomname = 'random';
+
+        avatar = $("#avatar").text();
+
+        $.ajax({
+            url:'/auth',
+            method:'POST',
+            data:{
+                username:username,
+                roomname:roomname
+            },
+            success: function(data){
+                if(data.type === 'success'){                   
+                    var html = '<form method="POST" action="'+postUrl+'" id="form" hidden><input type="text" name = "avatar" value="'+avatar+""+'" /><input type="text" name = "username" value="'+username+'" /><input type="text" name = "roomname" value="'+roomname+'" /></form>  ';
+                    $("body").append(html);
+                    $("#form").submit();
+                }
+                else{
+                    $("#alert").text(data.msg);
+                    $("#alert").fadeIn(1000);                  
+                }
+            }
+        })                
+    });
+
+    $("#playType").change(function(){        
+        changeMode();
+    });
+
+    function changeMode(){
+         if($("#playType").val() === 'Create or enter room'){
+             $("#roomname").removeAttr("disabled");
+             postUrl = '/play';
+        }else{
+            postUrl = '/random';
+            $("#roomname").attr("disabled", "disabled");
+        }
+    }
+
+    changeMode();
+
+</script>
+</body>
